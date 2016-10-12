@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+{% for friends in friend: %}
+	<p>Friend to update: {{ friends['name'] }}</p>
+	 <form action= "/update/{{friends['id']}}" method='POST'>
+    <label>Name:<input type="text" name="name" ></label>
+    <input type="submit" value="Update">
+  </form>
+  {% endfor %}
+</body>
+</html>

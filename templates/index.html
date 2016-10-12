@@ -1,0 +1,47 @@
+<html>
+<head>
+  <title>Friends</title>
+</head>
+<body>
+
+
+
+
+  
+  <h2>Add a friend </h2>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  
+  <form action='/friends' method='POST'>
+    <label>Name:<input type="text" name="name" ></label>
+    <input type="submit" value="Add">
+  </form>
+
+
+ {% for friend in friends: %}
+    <p>Friend: {{friend['name']}}</p>
+    <form action="/friends/{{friend['id']}}/edit" method="GET">
+      <input type="hidden" name="id" value="{{friend['id']}}">
+      <input type="submit" value="edit">
+    </form>
+
+    <form action="/friends/{{friend['id']}}/delete" method="POST">
+      <input type="hidden" name="id" value="{{friend['id']}}">
+      <input type="submit" value="delete">
+    </form>
+  <hr>
+  {% endfor %}
+
+
+
+
+
+
+</body>
+</html>
